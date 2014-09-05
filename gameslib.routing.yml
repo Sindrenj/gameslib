@@ -1,22 +1,28 @@
 gameslib.games:
-  path: '/games'
+  path: '/gameslib/games'
   defaults:
     _content: '\Drupal\gameslib\Controller\GamesController::games'
     _title: 'View all games'
   requirements: 
     _permission: 'access content'
 gameslib.register:
-  path: '/register'
+  path: '/gameslib/register'
   defaults:
     _content: '\Drupal\gameslib\Controller\GamesController::register'
     _title: 'Register a game'
+  requirements: 
+    _permission: 'access content'
 gameslib.update:
-  path: '/update'
+  path: '/gameslib/update'
   defaults:
     _content: '\Drupal\gameslib\Controller\GamesController::update'
     _title: 'Update a game'
+  requirements: 
+    _permission: 'access content'
 gameslib.delete:
-  path: '/delete'
+  path: '/gameslib/delete'
   defaults:
     _content: '\Drupal\gameslib\Controller\GamesController::delete'
     _title: 'Delete a game'
+  requirements: 
+    _permission: 'access content'

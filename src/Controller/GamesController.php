@@ -8,7 +8,6 @@
 namespace Drupal\gameslib\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class GamesController extends ControllerBase {
 
