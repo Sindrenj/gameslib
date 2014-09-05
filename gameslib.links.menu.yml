@@ -1,0 +1,9 @@
+gameslib.games:
+  title: 'Games library - View All'
+  description: 'View your games.'
+  parent: system.admin_structure
+  route_name: gameslib.games
+gameslib.register:
+  title: 'Games library - Register'
+  parent: system.admin_structure
+  route_name: gameslib.register

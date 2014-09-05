@@ -1,0 +1,22 @@
+gameslib.games:
+  path: '/games'
+  defaults:
+    _content: '\Drupal\gameslib\Controller\GamesController::bar'
+    _title: 'FooDemo'
+  requirements: 
+    _permission: 'access content'
+gameslib.register:
+  path: '/register'
+  defaults:
+    _content: '\Drupal\gameslib\Controller\GamesController::hello'
+    _title: 'Hello'
+gameslib.update:
+  path: '/update'
+  defaults:
+    _content: '\Drupal\gameslib\Controller\GamesController::hello'
+    _title: 'Hello'
+gameslib.delete:
+  path: '/delete'
+  defaults:
+    _content: '\Drupal\gameslib\Controller\GamesController::hello'
+    _title: 'Hello'

@@ -1,0 +1,6 @@
+name: gameslib
+description: 'Register, view, alter & dele your favourite games.'
+package: 'SindreNj labs'
+type: module
+version: 0.1
+core: 8.x
