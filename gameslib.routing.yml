@@ -8,7 +8,7 @@ gameslib.games:
 gameslib.register:
   path: '/gameslib/register'
   defaults:
-    _content: '\Drupal\gameslib\Controller\GamesController::register'
+    _form: '\Drupal\gameslib\Form\GamesForm'
     _title: 'Register a game'
   requirements: 
     _permission: 'access content'

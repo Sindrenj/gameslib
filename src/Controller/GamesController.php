@@ -12,7 +12,7 @@ use Drupal\Core\Controller\ControllerBase;
 class GamesController extends ControllerBase {
 
     public function games() {
-        return "Games!";
+        return "<a href='register'>Register a game..</a>";
     }
 
     public function register() {
