@@ -9,14 +9,14 @@ namespace Drupal\gameslib\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 
-class GamesController extends ControllerBase {
 
+class GamesController extends ControllerBase {
+   
     public function games() {
-        return "<a href='register'>Register a game..</a>";
+        
     }
 
     public function register() {
-        return "Register games!";
     }
 
     public function delete() {
