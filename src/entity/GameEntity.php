@@ -9,7 +9,7 @@ use Drupal\gameslib\GameInterface;
 
 //use Drupal\Core\Entity\EntityTypeInterface;
 
-class Game extends ContentEntityBase implements GameInterface {
+class GameEntity extends ContentEntityBase implements GameEntityInterface {
 
     public function id() {
         return $this->get('fbid')->value;

@@ -4,7 +4,7 @@ namespace Drupal\gameslib\Entity;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 
-interface GameInterface extends EntityInterface {
+interface GameEntityInterface extends EntityInterface {
     /**
      * Returns the identifier.
      * 
