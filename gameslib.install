@@ -1,0 +1,52 @@
+<?php
+
+function gameslib_schema() {
+    $schema['games'] = array(
+        'description' => "A schema that represents the game-entities in the gameslib-module.",
+        'fields' => array(
+            'gId' => array(
+                'type' => 'serial',
+                'not null' => TRUE,
+                'description' => 'The primarykey for the entityschema. This id may also be used as an identifier in Drupal.'
+            ),
+            'title' => array(
+                'type' => 'varchar',
+                'not null' => TRUE,
+                'length' => 100,
+                'description' => 'The title of the game.'
+            ),
+            'genre' => array(
+                'type' => 'varchar',
+                'not null' => TRUE,
+                'length' => 100,
+                'description' => 'The genre the game belongs to.'
+            ),
+            'description' => array(
+                'type' => 'varchar',
+                'not null' => FALSE,
+                'length' => 200,
+                'description' => 'A description of the game.'
+            ),
+            'image' => array(
+                'type' => 'varchar',
+                'not null' => FALSE,
+                'length' => 100,
+                'description' => 'An image that describes the game visually.'
+            ),
+            'authorid' => array(
+                'type' => 'int',
+                'not null' => TRUE,
+                'description' => 'Foreignkey that connects an user to a game.'
+            )
+        ),
+        'primary keys' => array('gId'),
+        'foreign keys' => array(
+            'UserAddGame' => array(
+                'table' => 'users',
+                'columns' => array('gId' => 'uid')
+            )
+        )
+    );
+    
+    return $schema;
+}

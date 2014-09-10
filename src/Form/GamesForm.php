@@ -69,15 +69,23 @@ class GamesForm extends FormBase {
      * {@inheritdoc}
      */
     public function validateForm(array &$form,  FormStateInterface $form_state) {
-
-        
     }
 
     /**
      * {@inheritdoc}
      */
     public function submitForm(array &$form,  FormStateInterface $form_state) {
-
+        //$id, $title, $description = 'None..', $image = null, $authorId = null
+        $game = new Game(
+                null, 
+                $form_state['values']['name'],
+                $form_state['value']['description'],
+                $form_state['value']['image'],
+                \Drupal::currentUser()->id
+        );
+        //Add the data to the database:
+        GameslibStorage::add( $game );
+        //Tell the user that the record were successfully saved to the database:
         drupal_set_message($this->t('Your game "@title" has been added to the library.', 
                 array('@title' => $form_state['values']['name'])));
     }
