@@ -6,6 +6,7 @@ function gameslib_schema() {
         'fields' => array(
             'gId' => array(
                 'type' => 'serial',
+                'unsigned' => TRUE,
                 'not null' => TRUE,
                 'description' => 'The primarykey for the entityschema. This id may also be used as an identifier in Drupal.'
             ),
@@ -39,13 +40,16 @@ function gameslib_schema() {
                 'description' => 'Foreignkey that connects an user to a game.'
             )
         ),
-        'primary keys' => array('gId'),
+        'unique keys' => array(
+            'gId' => array('gId'),
+        ),
         'foreign keys' => array(
             'UserAddGame' => array(
                 'table' => 'users',
                 'columns' => array('gId' => 'uid')
             )
-        )
+        ),
+        'primary key' => array('gId')
     );
     
     return $schema;

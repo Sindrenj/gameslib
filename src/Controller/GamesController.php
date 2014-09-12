@@ -13,9 +13,42 @@ use Drupal\gameslib\Storage\GameslibStorage;
 class GamesController extends ControllerBase {
    
     public function games() {
+        //1. Get the games from the database:
         $games = GameslibStorage::getAll();
-        
-        return $games;        
+       
+        //2. Define the header for the table:
+        $header = array(
+            'Icon' => t(''), 
+            'title' => t('Title:'),
+            'genre' => t('Genre:')
+        );
+        //3. Populate the rows for the table:
+        $rows = array();
+        foreach( $games as $game ) { 
+            $img = array(
+                'type' => 'image',
+                '#path' => $game->image,
+            );
+            
+            $rows[] = array(
+                'data' => array(
+                    $img,
+                    $game->title,
+                    $game->genre
+                )
+            );
+        }
+        //4. Create the table with $header & $rows:
+        $table = array(
+            '#type' => 'table',
+            '#header' => $header,
+            '#rows' => $rows,
+            '#attributes' => array(
+                'id' => 'games-table',
+            ),
+        );
+        //5.Assign a rendered table to the view:
+        return drupal_render($table); 
     }
 
     public function register() {

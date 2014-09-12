@@ -10,11 +10,11 @@ class GameslibStorage {
         //Get the connection from the database:
         $db = \Drupal::database();
         //The sql-code:
-        $result = $db->queryRange('SELECT id, title, description, image FROM game', 1, 10);
+        $result = $db->queryRange('SELECT gId, title, genre, description, image FROM games', 0, 10);
         //Create an array of the games:
         $games = array();
         foreach ($result as $key => $game) {
-            $games[$key] = new Game($game->id, $game->title, $game->description, $game->image);
+            $games[$key] = new Game( $game->gId, $game->title, $game->genre, $game->description, $game->image );
         }
 
         return $games;
@@ -28,11 +28,11 @@ class GameslibStorage {
             'genre' => $game->genre,
             'description' => $game->description,
             'image' => $game->image,
-            'authoId' => $game->authorId
+            'authorId' => $game->authorId
         );
         //Insert the data;
-        $db->db_insert('games')
-                ->fields($fields)
-                ->execute();         
+        db_insert('games')
+            ->fields($fields)
+            ->execute();         
     }
 }

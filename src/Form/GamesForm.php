@@ -10,9 +10,23 @@ namespace Drupal\gameslib\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\gameslib\Entity\Game;
+use Drupal\gameslib\Storage\GameslibStorage;
 
 class GamesForm extends FormBase {
-
+    
+    private function selectOptions() {
+        return array(
+            0 => t('Action'),
+            1 => t('Adventure'),
+            2 => t('Simulation'),
+            3 => t('Strategy'),
+            4 => t('MMORPG'),
+            5 => t('Other')
+        );
+    }
+    
+    
     /**
      * {@inheritdoc}.
      */
@@ -34,12 +48,7 @@ class GamesForm extends FormBase {
             '#type' => 'select',
             '#title' => $this->t('Category:'),
             '#options' => array(
-                0 => t('Action'),
-                1 => t('Adventure'),
-                2 => t('Simulation'),
-                3 => t('Strategy'),
-                4 => t('MMORPG'),
-                5 => t('Other')
+                $this->selectOptions()
             ),
             '#default_value' => 'Action',
         );
@@ -48,7 +57,7 @@ class GamesForm extends FormBase {
             '#type' => 'textfield',
             '#title' => $this->t('Image:'),
             '#default_value' => 'http://',
-            '#description' => 'The url to a image that describes the game.'
+            '#description' => 'The url to an image that describes the game.'
         );
         
         $form['description'] = array(
@@ -79,15 +88,20 @@ class GamesForm extends FormBase {
         $game = new Game(
                 null, 
                 $form_state['values']['name'],
+                $this->selectOptions()[ (int) ($form_state['values']['genre'])],
                 $form_state['value']['description'],
-                $form_state['value']['image'],
-                \Drupal::currentUser()->id
+                $form_state['value']['image']                
         );
+        
+        
+        //Debug: \Drupal::currentUser()->id
+        
         //Add the data to the database:
         GameslibStorage::add( $game );
         //Tell the user that the record were successfully saved to the database:
         drupal_set_message($this->t('Your game "@title" has been added to the library.', 
                 array('@title' => $form_state['values']['name'])));
     }
-
+    
+    
 }
