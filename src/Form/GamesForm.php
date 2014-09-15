@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\gameslib\Entity\Game;
 use Drupal\gameslib\Storage\GameslibStorage;
 
-class GamesForm extends FormBase {
+class GamesForm extends FormBase { 
     
     private function selectOptions() {
         return array(
