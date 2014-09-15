@@ -89,8 +89,7 @@ class GamesForm extends FormBase {
                 null, 
                 $form_state['values']['name'],
                 $this->selectOptions()[ (int) ($form_state['values']['genre'])],
-                $form_state['value']['description'],
-                $form_state['value']['image']                
+                $form_state['value']['description']
         );
         
         

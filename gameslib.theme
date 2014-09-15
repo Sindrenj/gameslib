@@ -1,0 +1,10 @@
+<?php
+
+    function gameslib_theme() {
+        return array(
+            'image' => array(
+                'template' => 'image',
+                'link' => $link
+            )
+        );
+    }
